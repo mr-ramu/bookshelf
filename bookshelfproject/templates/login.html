@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>BookShelf</h1>
+<p>ログイン画面</p>
+  <form method="POST">
+  {% csrf_token %}
+
+  {{ loginform.as_p }}
+
+  <input type="submit" value="ログイン">
+  <a href="{% url 'BookshelfApp:signup' %}">新規登録</a>
+  </form>
+{% endblock %}
