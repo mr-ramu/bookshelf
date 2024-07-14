@@ -5,15 +5,6 @@ from django.contrib.auth.models import (
 
 class UserManager(BaseUserManager):
   def create_user(self,name, email, password):
-    if not name:
-      raise ValueError('ユーザー名を入力してください。')
-    
-    if not email:
-      raise ValueError('メールアドレスを入力してください。')
-    
-    if not password:
-      raise ValueError('パスワードを入力してください。')
-    
     user = self.model(
       username = name,
       email = email,
@@ -37,7 +28,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser,PermissionsMixin):
   name = models.CharField(max_length=10)
   email = models.EmailField(max_length=254, unique=True)
-  # password = models.CharField('パスワード',max_length=128)   AbstractBaseUserに定義されてるので、ここで定義する必要はない
+  password = models.CharField(max_length=128) 
   icon = models.CharField(max_length=500, null=True, blank=True, default='static/images/default_user_icon.png') 
   created_at =models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
