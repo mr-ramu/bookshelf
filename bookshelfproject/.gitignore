@@ -1,2 +1,4 @@
 .env
 /bookshelfproject/__pycache__/
+
+**/__pycache__/**
