@@ -18,7 +18,7 @@ class SignupView(View):
     signupform = forms.SignupForm(request.POST)
     if signupform.is_valid():
       signupform.save()
-      return redirect('BookshelfApp:login')
+      return redirect('bookshelf:login')
     return render(request, 'signup.html', context={
       'signupform' : signupform,
     })
@@ -35,7 +35,7 @@ class LoginView(View):
     loginform = forms.LoginForm(request.POST)
     if loginform.is_valid():
       loginform.save()
-      return redirect('BookshelfApp:signup')
+      return redirect('bookshelf:signup')
     return render(request, 'login.html', context={
       'loginform' : loginform,
     })

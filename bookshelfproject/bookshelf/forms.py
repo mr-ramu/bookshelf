@@ -27,7 +27,6 @@ class SignupForm(forms.ModelForm):
       return cleaned_data
       
   def clean_password(self):
-
     password = self.cleaned_data.get('password')
 
     if password:

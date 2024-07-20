@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'BookshelfApp',
+    'bookshelf',
 ]
 
 MIDDLEWARE = [
@@ -72,7 +72,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'bookshelfproject.wsgi.application'
 
-AUTH_USER_MODEL = 'BookshelfApp.User'
+AUTH_USER_MODEL = 'bookshelf.User'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
