@@ -69,18 +69,3 @@ class LoginForm(forms.ModelForm):
       if not user:
         raise ValidationError('メールアドレスまたはパスワードが違います。')
       return     
-
-
-
-    
-class UserChangeForm(forms.ModelForm):
-  password = ReadOnlyPasswordHashField()
-  
-  
-  class Meta:
-    model = User
-    fields = ('name', 'email', 'password', 'is_superuser', 'is_active')
-    
-  def clean_password(self):
-    # すでに登録されているパスワードを返す
-    return self.initial['password']
