@@ -64,8 +64,8 @@ class LoginForm(forms.ModelForm):
       password = cleaned_data.get('password')
       
       if email and password:
-        user = authenticate(email=email, password=password)
+        is_valid = authenticate(email=email, password=password)
         
-      if not user:
+      if not is_valid:
         raise ValidationError('メールアドレスまたはパスワードが違います。')
       return     
