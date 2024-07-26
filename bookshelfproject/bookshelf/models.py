@@ -9,6 +9,7 @@ class UserManager(BaseUserManager):
       username = name,
       email = email,
     )
+    email = self.normalize_email(email)
     user.set_password(password)
     user.save(using=self._db)
     return user
@@ -17,11 +18,11 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
   name = models.CharField(max_length=20)
   email = models.EmailField(max_length=254, unique=True)
-  password = models.CharField(max_length=128) 
+  password = models.CharField(max_length=64) 
   icon = models.CharField(max_length=500, null=True, blank=True, default='static/images/default_user_icon.png') 
   created_at =models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
-  is_active = models.BooleanField(default=False)
+  is_active = models.BooleanField(default=True)
   
   USERNAME_FIELD = 'email'
   REQUIRED_FIELDS = ['name']
