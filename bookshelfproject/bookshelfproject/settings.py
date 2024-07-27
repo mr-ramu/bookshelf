@@ -16,7 +16,8 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "bookshelf", "static"),]
 # STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # STATICFILES_DIRS = os.path.join(BASE_DIR, "static"),
 
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'bookshelfproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
