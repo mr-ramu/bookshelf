@@ -42,6 +42,22 @@
   text-align: left;
 }
 
+.input {
+  text-align: center;
+  font-size: 16px;
+  width: 300px;
+  padding: 6px;
+  margin: 30px auto 20px;
+  color: white;
+  background: #59AFFF;
+  border: 2px solid #59AFFF;
+  border-radius: 2px;
+}
+
+.input:hover {
+  background-color: #4072A0;
+}
+
 .transition {
   display: block;
   text-align: center;
@@ -58,21 +74,6 @@
 
 .transition:hover {
   background-color: #F2F4F6;
-}
-.input {
-  text-align: center;
-  font-size: 16px;
-  width: 300px;
-  padding: 6px;
-  margin: 30px auto 20px;
-  color: white;
-  background: #59AFFF;
-  border: 2px solid #59AFFF;
-  border-radius: 2px;
-}
-
-.input:hover {
-  background-color: #4072A0;
 }
 
 .error {
