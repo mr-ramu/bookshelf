@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login
 class SignupView(View):
   def get(self, request):
     signupform = forms.SignupForm()
-    return render(request, 'signup.html', context={
+    return render(request, 'authentication/signup.html', context={
       'signupform' : signupform,
     })
     
@@ -17,7 +17,7 @@ class SignupView(View):
     if signupform.is_valid():
       signupform.save()
       return redirect('bookshelf:login')
-    return render(request, 'signup.html', context={
+    return render(request, 'authentication/signup.html', context={
       'signupform' : signupform,
     })
 
@@ -25,7 +25,7 @@ class SignupView(View):
 class LoginView(View):
   def get(self, request):
     loginform  = forms.LoginForm()
-    return render(request, 'login.html', context={
+    return render(request, 'authentication/login.html', context={
       'loginform' : loginform,
     })
     
@@ -43,4 +43,4 @@ class LoginView(View):
       else:
         loginform.add_error(None, 'メールアドレスまたはパスワードが違います。')
     
-    return render(request, 'login.html', context={'loginform':loginform})
+    return render(request, 'authentication/login.html', context={'loginform':loginform})
