@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static  %}
+<link rel="stylesheet" href="{% static 'bookshelf/login.css' %}">
+{% endblock %}
+{% block content %}
+<h1 class="logo">BookShelf</h1>
+  <form method="POST">
+  {% csrf_token %}
+
+<div class="formwrapper">
+  {% if loginform.non_field_errors %}
+    <div class='error'>
+      {% for error in loginform.non_field_errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="form">
+    <div class="label">
+      <label for="{{ loginform.email.id_for_label }}">メールアドレス</label>
+    </div>
+    <div class="input-form-wrapper">
+      <input class="input-form" id="{{ loginform.email.id_for_label }}" type="email" autocomplete="email" name="{{ loginform.email.html_name }}" required>
+    </div>
+    {% for error in loginform.email.errors %}
+      <p class="error">{{ error }}</p>
+    {% endfor %}
+  </div>
+  <div class="form">
+    <div class="label">
+      <label for="{{ loginform.password.id_for_label }}">パスワード</label>
+    </div>
+    <div class="input-form-wrapper">
+      <input class="input-form" id="{{ loginform.password.id_for_label }}" type="password" name="{{ loginform.password.html_name }}" required>
+    </div>
+    <p class="note">*パスワードは10文字以上の半角英数にしてください</p>
+   {% for error in loginform.password.errors %} 
+     <p class="error">{{ error }}</p>
+   {% endfor %}
+  </div>
+  <input class="input" type="submit" value="ログイン">
+  <a href="{% url 'bookshelf:signup' %}" class="transition">新規登録</a>
+  </form>
+</div>
+{% endblock %}
