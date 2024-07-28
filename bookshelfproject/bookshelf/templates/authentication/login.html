@@ -4,11 +4,10 @@
 <link rel="stylesheet" href="{% static 'bookshelf/login.css' %}">
 {% endblock %}
 {% block content %}
-<h1 class="logo">BookShelf</h1>
   <form method="POST">
   {% csrf_token %}
-
 <div class="formwrapper">
+  <h2>ログイン</h2>
   {% if loginform.non_field_errors %}
     <div class='error'>
       {% for error in loginform.non_field_errors %}
