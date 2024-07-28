@@ -1,30 +1,30 @@
 @charset "utf-8";
 
+header {
+  padding: 30px;
+}
+
 .logo {
   color:#2A2A2A;
   font-size: 24px;
-  margin: 30px;
+  margin: 0;
 }
 
-.formwrapper{
+.form-wrapper{
   display: block;
   width: 300px;
   margin: auto;
 }
 
-h2 {
+.title {
   font-size: 16px;
   text-align: center;
   margin-bottom: 20px;
+  color:#2A2A2A;
 }
 
-.note-form {
+.form-group {
   text-align: center;
-}
-
-.form {
-  text-align: center;
-  margin: 1%;
   margin-bottom: 30px;
 }
 
@@ -36,16 +36,21 @@ h2 {
 }
 
 .input-form {
-  width: 290px;
+  width: 296px;
   height: 30px;
   margin: auto;
+  padding: 0;
+}
+
+.input-form-wrapper{
+  margin-bottom: 10px;
 }
 
 .note {
   font-size: 10px;
-  margin: 10px;
   color: #6F6F6F;
   text-align: left;
+  margin: 0;
 }
 
 .input {

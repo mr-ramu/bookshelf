@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block head %}
 {% load static  %}
-<link rel="stylesheet" href="{% static 'authentication/login.css' %}">
+<link rel="stylesheet" href="{% static 'css/authentication/login.css' %}">
 {% endblock %}
 {% block content %}
+<div class="form-wrapper">
   <form method="POST">
   {% csrf_token %}
-<div class="formwrapper">
-  <h2>ログイン</h2>
+  <h1 class="title">ログイン</h1>
   {% if loginform.non_field_errors %}
     <div class='error'>
       {% for error in loginform.non_field_errors %}
@@ -15,29 +15,30 @@
       {% endfor %}
     </div>
   {% endif %}
-
-  <div class="form">
-    <div class="label">
-      <label for="{{ loginform.email.id_for_label }}">メールアドレス</label>
+  <div class="form-groups">
+    <div class="form-group">
+      <div class="label">
+        <label for="{{ loginform.email.id_for_label }}">メールアドレス</label>
+      </div>
+      <div class="input-form-wrapper">
+        <input class="input-form" id="{{ loginform.email.id_for_label }}" type="email" autocomplete="email" name="{{ loginform.email.html_name }}" required>
+      </div>
+      {% for error in loginform.email.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
     </div>
-    <div class="input-form-wrapper">
-      <input class="input-form" id="{{ loginform.email.id_for_label }}" type="email" autocomplete="email" name="{{ loginform.email.html_name }}" required>
-    </div>
-    {% for error in loginform.email.errors %}
+    <div class="form-group">
+      <div class="label">
+        <label for="{{ loginform.password.id_for_label }}">パスワード</label>
+      </div>
+      <div class="input-form-wrapper">
+        <input class="input-form" id="{{ loginform.password.id_for_label }}" type="password" name="{{ loginform.password.html_name }}" required>
+      </div>
+      <p class="note">*パスワードは10文字以上の半角英数にしてください</p>
+    {% for error in loginform.password.errors %} 
       <p class="error">{{ error }}</p>
     {% endfor %}
-  </div>
-  <div class="form">
-    <div class="label">
-      <label for="{{ loginform.password.id_for_label }}">パスワード</label>
     </div>
-    <div class="input-form-wrapper">
-      <input class="input-form" id="{{ loginform.password.id_for_label }}" type="password" name="{{ loginform.password.html_name }}" required>
-    </div>
-    <p class="note">*パスワードは10文字以上の半角英数にしてください</p>
-   {% for error in loginform.password.errors %} 
-     <p class="error">{{ error }}</p>
-   {% endfor %}
   </div>
   <input class="input" type="submit" value="ログイン">
   <a href="{% url 'bookshelf:signup' %}" class="transition">新規登録</a>
