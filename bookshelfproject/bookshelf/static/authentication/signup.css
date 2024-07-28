@@ -3,13 +3,19 @@
 .logo {
   color:#2A2A2A;
   font-size: 24px;
-  margin: 20px;
+  margin: 30px;
 }
 
 .formwrapper{
   display: block;
   width: 300px;
   margin: auto;
+}
+
+h2 {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .note-form {
