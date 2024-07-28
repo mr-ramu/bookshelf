@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <header>
+    <meta chasert="utf-8">
+    {% load static  %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <h1 class="logo">BookShelf</h1>
+    {% block head %}{% endblock %}
+  </header>
+
+  <body>
+    {% block content%}
+    {% endblock %}
+  </body>
+
+</html>

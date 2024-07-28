@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static  %}
+<link rel="stylesheet" href="{% static 'css/authentication/signup.css' %}">
+{% endblock %}
+{% block content %}
+<div class="form-wrapper">
+  <form method="POST">
+  {% csrf_token %}
+    <h1 class="title">会員登録</h1>
+    <div class="form-groups">
+      <div class="form-group">
+        <div class="label">
+          <label for="{{ signupform.name.id_for_label }}">ユーザー名</label>
+        </div>
+        <div class="input-form-wrapper">
+          <input class="input-form" id="{{ signupform.name.id_for_label }}" type="text" autocomplete="username" name="{{ signupform.name.html_name }}" required>
+        </div>
+        <p class="note">*ユーザー名は20文字以内にしてください</p>
+        {% for error in signupform.name.errors %}
+          <p class="error">{{ error }}</p>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label for="{{ signupform.email.id_for_label }}">メールアドレス</label>
+        </div>
+        <div class="input-form-wrapper">
+          <input class="input-form" id="{{ signupform.email.id_for_label }}" type="email" autocomplete="email" name="{{ signupform.email.html_name }}" required>
+        </div>
+        {% for error in signupform.email.errors %}
+          <p class="error">{{ error }}</p>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label for="{{ signupform.password.id_for_label }}">パスワード</label>
+        </div>
+        <div class="input-form-wrapper">
+          <input class="input-form" id="{{ signupform.password.id_for_label }}" type="password" name="{{ signupform.password.html_name }}" required>
+        </div>
+          <p class="note">*パスワードは10文字以上の半角英数にしてください</p>
+        {% for error in signupform.password.errors %}
+          <p class="error">{{ error }}</p>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        <div class="label">
+          <label for="{{ signupform.confirm_password.id_for_label }}">パスワード再入力</label>
+        </div>
+        <div class="input-form-wrapper">
+          <input class="input-form" id="{{ signupform.confirm_password.id_for_label }}" type="password" name="{{ signupform.confirm_password.html_name }}" required>
+        </div>
+        {% for error in signupform.confirm_password.errors %}
+          <p class="error">{{ error }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <input class="input" type="submit" value="新規登録">
+    <a href="{% url 'bookshelf:login' %}" class="transition" >ログイン</a>
+  </form>
+</div>
+{% endblock %}
