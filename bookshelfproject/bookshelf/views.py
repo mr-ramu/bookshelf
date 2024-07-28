@@ -16,8 +16,8 @@ class SignupView(View):
     signupform = forms.SignupForm(request.POST)
     if signupform.is_valid():
       signupform.save()
+      #TODO：ホーム画面を作ったら、そっちに遷移させるようリダイレクト先変更
       return redirect('bookshelf:login')
-    #TODO：↑ホーム画面を作ったら、そっちに遷移させるようリダイレクト先変更
     return render(request, 'authentication/signup.html', context={
       'signupform' : signupform,
     })
@@ -39,8 +39,8 @@ class LoginView(View):
       
       if user is not None:
         login(request, user)
+        #TODO：ホーム画面を作ったら、そっちに遷移させるようリダイレクト先変更
         return redirect('bookshelf:signup')
-      #TODO：↑ホーム画面を作ったら、そっちに遷移させるようリダイレクト先変更
       
       else:
         loginform.add_error(None, 'メールアドレスまたはパスワードが違います。')
