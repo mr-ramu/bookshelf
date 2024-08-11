@@ -8,9 +8,9 @@
   <form method="POST">
   {% csrf_token %}
   <h1 class="title">ログイン</h1>
-  {% if loginform.non_field_errors %}
+  {% if login_form.non_field_errors %}
     <div class='error'>
-      {% for error in loginform.non_field_errors %}
+      {% for error in login_form.non_field_errors %}
         <p class="error">{{ error }}</p>
       {% endfor %}
     </div>
@@ -18,24 +18,24 @@
   <div class="form-groups">
     <div class="form-group">
       <div class="label">
-        <label for="{{ loginform.email.id_for_label }}">メールアドレス</label>
+        <label for="{{ login_form.email.id_for_label }}">メールアドレス</label>
       </div>
       <div class="input-form-wrapper">
-        <input class="input-form" id="{{ loginform.email.id_for_label }}" type="email" autocomplete="email" name="{{ loginform.email.html_name }}" required>
+        <input class="input-form" id="{{ login_form.email.id_for_label }}" type="email" autocomplete="email" name="{{ login_form.email.html_name }}" required>
       </div>
-      {% for error in loginform.email.errors %}
+      {% for error in login_form.email.errors %}
         <p class="error">{{ error }}</p>
       {% endfor %}
     </div>
     <div class="form-group">
       <div class="label">
-        <label for="{{ loginform.password.id_for_label }}">パスワード</label>
+        <label for="{{ login_form.password.id_for_label }}">パスワード</label>
       </div>
       <div class="input-form-wrapper">
-        <input class="input-form" id="{{ loginform.password.id_for_label }}" type="password" name="{{ loginform.password.html_name }}" required>
+        <input class="input-form" id="{{ login_form.password.id_for_label }}" type="password" name="{{ login_form.password.html_name }}" required>
       </div>
       <p class="note">*パスワードは10文字以上の半角英数にしてください</p>
-    {% for error in loginform.password.errors %} 
+    {% for error in login_form.password.errors %} 
       <p class="error">{{ error }}</p>
     {% endfor %}
     </div>
