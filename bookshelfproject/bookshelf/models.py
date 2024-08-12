@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import (
   BaseUserManager, AbstractBaseUser,
 )
+from django.core.validators import MinLengthValidator
 
 class UserManager(BaseUserManager):
   def create_user(self,name, email, password):
@@ -18,7 +19,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
   name = models.CharField(max_length=20)
   email = models.EmailField(max_length=254, unique=True)
-  password = models.CharField(max_length=64) 
+  password = models.CharField(max_length=64, validators=[MinLengthValidator(10)])
   icon = models.CharField(max_length=500,default='static/images/default_user_icon.png') 
   created_at =models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
